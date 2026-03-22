@@ -1,0 +1,1143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chandrakant Bhise | UC Engineer & Voice Architect</title>
+    <meta name="description" content="Unified Communications Engineer & Voice Architect with 10+ years of experience delivering 100+ global voice transformation projects for Fortune 500 enterprises.">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        /* ============ CSS VARIABLES ============ */
+        :root {
+            --primary: #0f172a;
+            --primary-light: #1e293b;
+            --accent: #06b6d4;
+            --accent2: #8b5cf6;
+            --accent3: #f59e0b;
+            --accent-glow: rgba(6, 182, 212, 0.3);
+            --text: #f1f5f9;
+            --text-muted: #94a3b8;
+            --text-dark: #334155;
+            --surface: #1e293b;
+            --surface2: #0f172a;
+            --gradient1: linear-gradient(135deg, #06b6d4, #8b5cf6);
+            --gradient2: linear-gradient(135deg, #0f172a, #1e293b);
+            --gradient3: linear-gradient(135deg, #06b6d4, #3b82f6);
+            --card-bg: rgba(30, 41, 59, 0.7);
+            --border: rgba(6, 182, 212, 0.15);
+            --radius: 16px;
+            --shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        [data-theme="light"] {
+            --primary: #f8fafc;
+            --primary-light: #f1f5f9;
+            --text: #0f172a;
+            --text-muted: #64748b;
+            --surface: #ffffff;
+            --surface2: #f1f5f9;
+            --card-bg: rgba(255, 255, 255, 0.9);
+            --border: rgba(6, 182, 212, 0.2);
+            --shadow: 0 4px 30px rgba(0, 0, 0, 0.08);
+        }
+
+        /* ============ RESET & BASE ============ */
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+        html { scroll-behavior: smooth; scroll-padding-top: 80px; }
+
+        body {
+            font-family: 'Inter', -apple-system, sans-serif;
+            background: var(--primary);
+            color: var(--text);
+            line-height: 1.7;
+            overflow-x: hidden;
+        }
+
+        ::selection { background: var(--accent); color: var(--primary); }
+
+        a { color: var(--accent); text-decoration: none; transition: all 0.3s; }
+        a:hover { color: #22d3ee; }
+
+        /* ============ ANIMATED BACKGROUND ============ */
+        .bg-grid {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background-image:
+                radial-gradient(circle at 20% 50%, rgba(6, 182, 212, 0.04) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(139, 92, 246, 0.04) 0%, transparent 50%),
+                radial-gradient(circle at 50% 80%, rgba(245, 158, 11, 0.03) 0%, transparent 50%);
+            pointer-events: none; z-index: 0;
+        }
+
+        .floating-orb {
+            position: fixed; border-radius: 50%; filter: blur(80px); opacity: 0.15;
+            pointer-events: none; z-index: 0; animation: float 20s infinite ease-in-out;
+        }
+        .orb-1 { width: 400px; height: 400px; background: var(--accent); top: 10%; left: -5%; animation-delay: 0s; }
+        .orb-2 { width: 300px; height: 300px; background: var(--accent2); top: 60%; right: -5%; animation-delay: -7s; }
+        .orb-3 { width: 250px; height: 250px; background: var(--accent3); bottom: 10%; left: 30%; animation-delay: -14s; }
+
+        @keyframes float {
+            0%, 100% { transform: translate(0, 0) scale(1); }
+            33% { transform: translate(30px, -30px) scale(1.05); }
+            66% { transform: translate(-20px, 20px) scale(0.95); }
+        }
+
+        /* ============ NAVIGATION ============ */
+        .nav {
+            position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+            background: rgba(15, 23, 42, 0.8); backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--border);
+            transition: all 0.3s;
+        }
+        [data-theme="light"] .nav { background: rgba(248, 250, 252, 0.85); }
+
+        .nav-inner {
+            max-width: 1200px; margin: 0 auto; padding: 0 24px;
+            display: flex; justify-content: space-between; align-items: center; height: 70px;
+        }
+
+        .nav-logo {
+            font-size: 1.3rem; font-weight: 800; color: var(--text);
+            background: var(--gradient1); -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+        }
+
+        .nav-links { display: flex; gap: 32px; align-items: center; list-style: none; }
+        .nav-links a { color: var(--text-muted); font-size: 0.9rem; font-weight: 500; position: relative; }
+        .nav-links a:hover { color: var(--accent); }
+        .nav-links a::after {
+            content: ''; position: absolute; bottom: -4px; left: 0; width: 0; height: 2px;
+            background: var(--gradient1); transition: width 0.3s;
+        }
+        .nav-links a:hover::after { width: 100%; }
+
+        .theme-toggle {
+            background: var(--surface); border: 1px solid var(--border); color: var(--accent);
+            width: 42px; height: 42px; border-radius: 12px; cursor: pointer;
+            display: flex; align-items: center; justify-content: center; font-size: 1.1rem;
+            transition: all 0.3s;
+        }
+        .theme-toggle:hover { background: var(--accent); color: var(--primary); }
+
+        .hamburger { display: none; background: none; border: none; color: var(--text); font-size: 1.5rem; cursor: pointer; }
+
+        /* ============ HERO SECTION ============ */
+        .hero {
+            min-height: 100vh; display: flex; align-items: center; position: relative; z-index: 1;
+            padding: 100px 24px 60px;
+        }
+
+        .hero-inner {
+            max-width: 1200px; margin: 0 auto; width: 100%;
+            display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center;
+        }
+
+        .hero-badge {
+            display: inline-flex; align-items: center; gap: 8px;
+            background: rgba(6, 182, 212, 0.1); border: 1px solid rgba(6, 182, 212, 0.2);
+            padding: 8px 20px; border-radius: 50px; font-size: 0.85rem; color: var(--accent);
+            margin-bottom: 24px; font-weight: 500;
+        }
+        .hero-badge .pulse { width: 8px; height: 8px; background: #22c55e; border-radius: 50%; animation: pulse 2s infinite; }
+
+        @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.4; } }
+
+        .hero h1 { font-size: 3.5rem; font-weight: 900; line-height: 1.1; margin-bottom: 16px; }
+        .hero h1 .gradient-text { background: var(--gradient1); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+
+        .hero-subtitle { font-size: 1.2rem; color: var(--text-muted); margin-bottom: 32px; max-width: 520px; }
+
+        .hero-cta { display: flex; gap: 16px; flex-wrap: wrap; }
+
+        .btn-primary {
+            display: inline-flex; align-items: center; gap: 8px;
+            background: var(--gradient1); color: white; padding: 14px 32px;
+            border-radius: 12px; font-weight: 600; font-size: 0.95rem;
+            transition: all 0.3s; border: none; cursor: pointer;
+            box-shadow: 0 4px 20px var(--accent-glow);
+        }
+        .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 30px var(--accent-glow); color: white; }
+
+        .btn-secondary {
+            display: inline-flex; align-items: center; gap: 8px;
+            background: transparent; color: var(--text); padding: 14px 32px;
+            border-radius: 12px; font-weight: 600; font-size: 0.95rem;
+            border: 1px solid var(--border); transition: all 0.3s; cursor: pointer;
+        }
+        .btn-secondary:hover { border-color: var(--accent); color: var(--accent); transform: translateY(-2px); }
+
+        /* Hero Visual - Metrics Card */
+        .hero-visual {
+            display: flex; justify-content: center; align-items: center;
+        }
+
+        .metrics-grid {
+            display: grid; grid-template-columns: 1fr 1fr; gap: 16px; width: 100%;
+        }
+
+        .metric-card {
+            background: var(--card-bg); backdrop-filter: blur(20px);
+            border: 1px solid var(--border); border-radius: var(--radius);
+            padding: 28px 24px; text-align: center;
+            transition: all 0.4s; position: relative; overflow: hidden;
+        }
+        .metric-card::before {
+            content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
+            background: var(--gradient1); opacity: 0; transition: opacity 0.3s;
+        }
+        .metric-card:hover { transform: translateY(-4px); border-color: var(--accent); box-shadow: var(--shadow); }
+        .metric-card:hover::before { opacity: 1; }
+
+        .metric-number {
+            font-size: 2.5rem; font-weight: 900;
+            background: var(--gradient1); -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+            line-height: 1.2;
+        }
+        .metric-label { font-size: 0.85rem; color: var(--text-muted); margin-top: 4px; font-weight: 500; }
+
+        /* ============ SECTION STYLES ============ */
+        section { position: relative; z-index: 1; padding: 100px 24px; }
+
+        .section-inner { max-width: 1200px; margin: 0 auto; }
+
+        .section-label {
+            display: inline-flex; align-items: center; gap: 8px;
+            font-size: 0.85rem; color: var(--accent); font-weight: 600;
+            text-transform: uppercase; letter-spacing: 2px; margin-bottom: 12px;
+        }
+        .section-label i { font-size: 0.75rem; }
+
+        .section-title { font-size: 2.5rem; font-weight: 800; margin-bottom: 16px; }
+        .section-desc { font-size: 1.1rem; color: var(--text-muted); max-width: 600px; margin-bottom: 48px; }
+
+        /* ============ ABOUT ============ */
+        .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: start; }
+
+        .about-text p { color: var(--text-muted); margin-bottom: 20px; font-size: 1.05rem; }
+
+        .about-highlights {
+            display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 32px;
+        }
+
+        .highlight-item {
+            background: var(--card-bg); backdrop-filter: blur(20px);
+            border: 1px solid var(--border); border-radius: 12px;
+            padding: 20px; display: flex; align-items: start; gap: 12px;
+        }
+        .highlight-item i { color: var(--accent); font-size: 1.2rem; margin-top: 2px; }
+        .highlight-item span { font-size: 0.9rem; font-weight: 500; }
+
+        .about-photo {
+            position: relative; display: flex; justify-content: center;
+        }
+        .photo-frame {
+            width: 320px; height: 380px; border-radius: 24px; overflow: hidden;
+            border: 2px solid var(--border); position: relative;
+            background: var(--gradient2);
+            display: flex; align-items: center; justify-content: center;
+            box-shadow: var(--shadow);
+        }
+        .photo-frame .placeholder-icon {
+            font-size: 6rem; color: var(--accent); opacity: 0.3;
+        }
+        .photo-frame img {
+            width: 100%; height: 100%; object-fit: cover;
+        }
+        .photo-decoration {
+            position: absolute; width: 100%; height: 100%; top: 12px; left: 12px;
+            border: 2px solid var(--accent); border-radius: 24px; opacity: 0.3; z-index: -1;
+        }
+
+        /* ============ SKILLS ============ */
+        .skills-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(340px, 1fr)); gap: 20px; }
+
+        .skill-card {
+            background: var(--card-bg); backdrop-filter: blur(20px);
+            border: 1px solid var(--border); border-radius: var(--radius);
+            padding: 28px; transition: all 0.3s;
+        }
+        .skill-card:hover { border-color: var(--accent); transform: translateY(-2px); box-shadow: var(--shadow); }
+
+        .skill-card-header { display: flex; align-items: center; gap: 14px; margin-bottom: 18px; }
+        .skill-icon {
+            width: 48px; height: 48px; border-radius: 12px;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 1.3rem; color: white;
+        }
+        .skill-icon.cyan { background: linear-gradient(135deg, #06b6d4, #0891b2); }
+        .skill-icon.purple { background: linear-gradient(135deg, #8b5cf6, #7c3aed); }
+        .skill-icon.amber { background: linear-gradient(135deg, #f59e0b, #d97706); }
+        .skill-icon.green { background: linear-gradient(135deg, #10b981, #059669); }
+        .skill-icon.blue { background: linear-gradient(135deg, #3b82f6, #2563eb); }
+        .skill-icon.rose { background: linear-gradient(135deg, #f43f5e, #e11d48); }
+        .skill-icon.indigo { background: linear-gradient(135deg, #6366f1, #4f46e5); }
+
+        .skill-card-title { font-size: 1.05rem; font-weight: 700; }
+
+        .skill-tags { display: flex; flex-wrap: wrap; gap: 8px; }
+        .skill-tag {
+            background: rgba(6, 182, 212, 0.08); border: 1px solid rgba(6, 182, 212, 0.15);
+            padding: 6px 14px; border-radius: 8px; font-size: 0.8rem;
+            color: var(--text-muted); font-weight: 500; transition: all 0.2s;
+        }
+        .skill-tag:hover { background: rgba(6, 182, 212, 0.15); color: var(--accent); border-color: var(--accent); }
+
+        /* ============ CERTIFICATIONS ============ */
+        .certs-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 16px; }
+
+        .cert-card {
+            background: var(--card-bg); backdrop-filter: blur(20px);
+            border: 1px solid var(--border); border-radius: var(--radius);
+            padding: 24px; display: flex; align-items: start; gap: 16px;
+            transition: all 0.3s;
+        }
+        .cert-card:hover { border-color: var(--accent); transform: translateY(-2px); box-shadow: var(--shadow); }
+
+        .cert-badge {
+            min-width: 56px; height: 56px; border-radius: 12px;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 1.1rem; font-weight: 800; color: white;
+            overflow: hidden; position: relative;
+        }
+        .cert-badge img {
+            width: 100%; height: 100%; object-fit: contain; padding: 4px;
+            border-radius: 12px;
+        }
+        .cert-badge .badge-fallback {
+            display: none;
+        }
+        .cert-badge img[data-failed] { display: none; }
+        .cert-badge img[data-failed] + .badge-fallback { display: flex; }
+        .cert-badge.ms { background: linear-gradient(135deg, #0078d4, #005a9e); }
+        .cert-badge.ac { background: linear-gradient(135deg, #e94235, #c53126); }
+        .cert-badge.or { background: linear-gradient(135deg, #f80000, #c00); }
+        .cert-badge.cs { background: linear-gradient(135deg, #049fd9, #0373a7); }
+        .cert-badge.asc { background: linear-gradient(135deg, #10b981, #059669); }
+        .cert-badge.lw { background: linear-gradient(135deg, #8b5cf6, #6d28d9); }
+
+        .cert-info h4 { font-size: 0.95rem; font-weight: 600; margin-bottom: 4px; }
+        .cert-issuer { font-size: 0.8rem; color: var(--text-muted); }
+
+        /* ============ EXPERIENCE TIMELINE ============ */
+        .timeline { position: relative; padding-left: 40px; }
+        .timeline::before {
+            content: ''; position: absolute; left: 15px; top: 0; bottom: 0;
+            width: 2px; background: linear-gradient(180deg, var(--accent), var(--accent2), var(--accent3));
+        }
+
+        .timeline-item { position: relative; margin-bottom: 48px; }
+        .timeline-item:last-child { margin-bottom: 0; }
+
+        .timeline-dot {
+            position: absolute; left: -33px; top: 6px;
+            width: 14px; height: 14px; border-radius: 50%;
+            background: var(--accent); border: 3px solid var(--primary);
+            box-shadow: 0 0 0 3px var(--accent);
+        }
+        .timeline-item:first-child .timeline-dot { background: #22c55e; box-shadow: 0 0 0 3px #22c55e, 0 0 12px rgba(34, 197, 94, 0.4); }
+
+        .timeline-header { display: flex; justify-content: space-between; align-items: start; flex-wrap: wrap; gap: 8px; margin-bottom: 8px; }
+
+        .timeline-company { font-size: 1.3rem; font-weight: 800; display: flex; align-items: center; gap: 12px; }
+        .company-logo {
+            height: 32px; width: auto; max-width: 100px; object-fit: contain; border-radius: 6px;
+            background: white; padding: 4px 8px;
+        }
+        .company-badge {
+            display: none; height: 32px; padding: 4px 12px; border-radius: 6px;
+            font-size: 0.7rem; font-weight: 800; letter-spacing: 1px;
+            color: white; align-items: center; justify-content: center;
+        }
+        .company-badge.ntt { background: linear-gradient(135deg, #0072BC, #004B87); }
+        .company-badge.oerlikon { background: linear-gradient(135deg, #003A70, #00264D); }
+        .company-badge.mindtree { background: linear-gradient(135deg, #00A3E0, #005F9E); }
+        .company-badge.infosys { background: linear-gradient(135deg, #007CC3, #004A8F); }
+        .timeline-date {
+            font-size: 0.85rem; color: var(--accent); font-weight: 600;
+            background: rgba(6, 182, 212, 0.1); padding: 4px 14px; border-radius: 8px;
+        }
+        .timeline-role { font-size: 1rem; color: var(--accent2); font-weight: 600; margin-bottom: 4px; }
+        .timeline-client { font-size: 0.9rem; color: var(--text-muted); font-style: italic; margin-bottom: 12px; }
+
+        .timeline-content {
+            background: var(--card-bg); backdrop-filter: blur(20px);
+            border: 1px solid var(--border); border-radius: var(--radius);
+            padding: 24px;
+        }
+
+        .timeline-points { list-style: none; }
+        .timeline-points li {
+            position: relative; padding-left: 20px; margin-bottom: 8px;
+            font-size: 0.92rem; color: var(--text-muted); line-height: 1.6;
+        }
+        .timeline-points li::before {
+            content: '\25AA'; position: absolute; left: 0; color: var(--accent); font-size: 0.7rem; top: 4px;
+        }
+
+        .timeline-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 16px; padding-top: 16px; border-top: 1px solid var(--border); }
+        .timeline-tag {
+            background: rgba(139, 92, 246, 0.1); border: 1px solid rgba(139, 92, 246, 0.2);
+            padding: 4px 12px; border-radius: 6px; font-size: 0.75rem;
+            color: var(--accent2); font-weight: 500;
+        }
+
+        /* ============ CLIENTS MARQUEE ============ */
+        .clients-section { background: var(--surface2); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+
+        .clients-scroll { overflow: hidden; position: relative; padding: 20px 0; }
+        .clients-track {
+            display: flex; gap: 48px; animation: scroll 30s linear infinite; width: max-content;
+        }
+        @keyframes scroll {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+        .client-name {
+            font-size: 1.2rem; font-weight: 700; color: var(--text-muted); opacity: 0.5;
+            white-space: nowrap; transition: opacity 0.3s;
+        }
+        .client-name:hover { opacity: 1; color: var(--accent); }
+
+        /* ============ CONTACT ============ */
+        .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; }
+
+        .contact-card {
+            background: var(--card-bg); backdrop-filter: blur(20px);
+            border: 1px solid var(--border); border-radius: var(--radius);
+            padding: 32px; display: flex; align-items: center; gap: 20px;
+            transition: all 0.3s;
+        }
+        .contact-card:hover { border-color: var(--accent); transform: translateY(-2px); box-shadow: var(--shadow); }
+
+        .contact-icon {
+            width: 56px; height: 56px; min-width: 56px; border-radius: 14px;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 1.3rem; color: white;
+        }
+        .contact-icon.email-icon { background: linear-gradient(135deg, #06b6d4, #0891b2); }
+        .contact-icon.phone-icon { background: linear-gradient(135deg, #10b981, #059669); }
+        .contact-icon.linkedin-icon { background: linear-gradient(135deg, #0077b5, #005a8d); }
+        .contact-icon.location-icon { background: linear-gradient(135deg, #f59e0b, #d97706); }
+
+        .contact-label { font-size: 0.8rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 1px; font-weight: 600; }
+        .contact-value { font-size: 1rem; font-weight: 600; margin-top: 4px; }
+
+        /* ============ FOOTER ============ */
+        footer {
+            text-align: center; padding: 40px 24px;
+            border-top: 1px solid var(--border); position: relative; z-index: 1;
+        }
+        footer p { color: var(--text-muted); font-size: 0.9rem; }
+
+        /* ============ SCROLL ANIMATIONS ============ */
+        .reveal { opacity: 0; transform: translateY(30px); transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1); }
+        .reveal.active { opacity: 1; transform: translateY(0); }
+
+        /* ============ RESPONSIVE ============ */
+        @media (max-width: 768px) {
+            .nav-links { display: none; }
+            .hamburger { display: block; }
+            .nav-links.open {
+                display: flex; flex-direction: column;
+                position: absolute; top: 70px; left: 0; right: 0;
+                background: rgba(15, 23, 42, 0.95); backdrop-filter: blur(20px);
+                padding: 24px; gap: 20px; border-bottom: 1px solid var(--border);
+            }
+            [data-theme="light"] .nav-links.open { background: rgba(248, 250, 252, 0.95); }
+            .hero-inner { grid-template-columns: 1fr; text-align: center; }
+            .hero h1 { font-size: 2.5rem; }
+            .hero-subtitle { margin: 0 auto 32px; }
+            .hero-cta { justify-content: center; }
+            .about-grid { grid-template-columns: 1fr; }
+            .about-photo { order: -1; }
+            .contact-grid { grid-template-columns: 1fr; }
+            .section-title { font-size: 2rem; }
+            .metric-number { font-size: 2rem; }
+            .timeline { padding-left: 30px; }
+            .about-highlights { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+    <!-- Animated Background -->
+    <div class="bg-grid"></div>
+    <div class="floating-orb orb-1"></div>
+    <div class="floating-orb orb-2"></div>
+    <div class="floating-orb orb-3"></div>
+
+    <!-- Navigation -->
+    <nav class="nav">
+        <div class="nav-inner">
+            <div class="nav-logo">CB</div>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#about">About</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#certifications">Certifications</a></li>
+                <li><a href="#experience">Experience</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <div style="display:flex;gap:12px;align-items:center;">
+                <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+                    <i class="fas fa-moon"></i>
+                </button>
+                <button class="hamburger" id="hamburger" aria-label="Menu">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="hero">
+        <div class="hero-inner">
+            <div class="hero-content">
+                <div class="hero-badge">
+                    <span class="pulse"></span>
+                    Available for Opportunities
+                </div>
+                <h1>
+                    Hi, I'm<br>
+                    <span class="gradient-text">Chandrakant Bhise</span>
+                </h1>
+                <p class="hero-subtitle">
+                    Unified Communications Engineer & Voice Architect — transforming enterprise telephony into modern, scalable, and cost-effective cloud voice platforms for global organizations.
+                </p>
+                <div class="hero-cta">
+                    <a href="#contact" class="btn-primary">
+                        <i class="fas fa-paper-plane"></i> Get in Touch
+                    </a>
+                    <a href="#experience" class="btn-secondary">
+                        <i class="fas fa-briefcase"></i> View Experience
+                    </a>
+                </div>
+            </div>
+            <div class="hero-visual">
+                <div class="metrics-grid">
+                    <div class="metric-card">
+                        <div class="metric-number" data-count="100" data-suffix="+">0</div>
+                        <div class="metric-label">Projects Delivered</div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="metric-number" data-count="600" data-suffix="K+">0</div>
+                        <div class="metric-label">Users Voice-Enabled</div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="metric-number" data-count="10" data-suffix="+">0</div>
+                        <div class="metric-label">Years of Experience</div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="metric-number" data-count="9" data-suffix="+">0</div>
+                        <div class="metric-label">Certifications</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Clients Marquee -->
+    <section class="clients-section" style="padding: 40px 24px;">
+        <div class="section-inner">
+            <p style="text-align:center;color:var(--text-muted);font-size:0.85rem;text-transform:uppercase;letter-spacing:2px;font-weight:600;margin-bottom:16px;">Trusted by Global Enterprises</p>
+            <div class="clients-scroll">
+                <div class="clients-track">
+                    <span class="client-name">Nestl&eacute;</span>
+                    <span class="client-name">Siemens</span>
+                    <span class="client-name">Bombardier</span>
+                    <span class="client-name">Louis Vuitton</span>
+                    <span class="client-name">Hub International</span>
+                    <span class="client-name">Ampol</span>
+                    <span class="client-name">McCain</span>
+                    <span class="client-name">Deutz</span>
+                    <span class="client-name">Forbo</span>
+                    <span class="client-name">Singapore Government</span>
+                    <span class="client-name">Oerlikon</span>
+                    <span class="client-name">Telstra</span>
+                    <span class="client-name">Intel</span>
+                    <!-- Duplicate for seamless scroll -->
+                    <span class="client-name">Nestl&eacute;</span>
+                    <span class="client-name">Siemens</span>
+                    <span class="client-name">Bombardier</span>
+                    <span class="client-name">Louis Vuitton</span>
+                    <span class="client-name">Hub International</span>
+                    <span class="client-name">Ampol</span>
+                    <span class="client-name">McCain</span>
+                    <span class="client-name">Deutz</span>
+                    <span class="client-name">Forbo</span>
+                    <span class="client-name">Singapore Government</span>
+                    <span class="client-name">Oerlikon</span>
+                    <span class="client-name">Telstra</span>
+                    <span class="client-name">Intel</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about">
+        <div class="section-inner">
+            <div class="about-grid">
+                <div class="about-text reveal">
+                    <span class="section-label"><i class="fas fa-user"></i> About Me</span>
+                    <h2 class="section-title">Transforming Voice Platforms Globally</h2>
+                    <p>
+                        I am a seasoned Unified Communications Engineer and Voice Architect currently serving as a
+                        <strong>Modern Workplace Consultant & UC Voice Architect at NTT Cloud and Communications</strong> —
+                        a global leader handling approximately 25% of Microsoft's voice platform traffic.
+                    </p>
+                    <p>
+                        With over 10 years of progressive experience, I specialize in designing, deploying, and managing
+                        enterprise-grade UC solutions for global organizations, including Fortune 500 enterprises. My expertise
+                        spans Microsoft Teams Direct Routing, Operator Connect, SBC architecture (AudioCodes, Oracle, Ribbon),
+                        contact center solutions, and cutting-edge AI-powered voice technologies.
+                    </p>
+                    <p>
+                        I have a deep understanding of global telecom regulations and have successfully delivered projects in
+                        regulated markets including India, China, Turkey, UAE, and LATAM countries — working closely with regulatory
+                        bodies like India's DOT and TRAI.
+                    </p>
+                    <div class="about-highlights">
+                        <div class="highlight-item">
+                            <i class="fas fa-globe"></i>
+                            <span>Global Deployment Expertise Across All Regions</span>
+                        </div>
+                        <div class="highlight-item">
+                            <i class="fas fa-shield-halved"></i>
+                            <span>Zero-Downtime Solutions for Critical Industries</span>
+                        </div>
+                        <div class="highlight-item">
+                            <i class="fas fa-robot"></i>
+                            <span>AI Voice Agent & Contact Center Builder</span>
+                        </div>
+                        <div class="highlight-item">
+                            <i class="fas fa-coins"></i>
+                            <span>UC Cost Optimization & Techno-Commercial Consulting</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="about-photo reveal">
+                    <div class="photo-frame">
+                        <!-- Replace with: <img src="your-photo.jpg" alt="Chandrakant Bhise"> -->
+                        <i class="fas fa-user-tie placeholder-icon"></i>
+                        <div class="photo-decoration"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" style="background: var(--surface2);">
+        <div class="section-inner">
+            <span class="section-label reveal"><i class="fas fa-code"></i> Expertise</span>
+            <h2 class="section-title reveal">Core Competencies</h2>
+            <p class="section-desc reveal">Comprehensive skill set spanning UC platforms, SBC architecture, cloud technologies, and AI-powered voice solutions.</p>
+
+            <div class="skills-grid">
+                <div class="skill-card reveal">
+                    <div class="skill-card-header">
+                        <div class="skill-icon cyan"><i class="fas fa-phone-volume"></i></div>
+                        <h3 class="skill-card-title">UC Platforms & Voice</h3>
+                    </div>
+                    <div class="skill-tags">
+                        <span class="skill-tag">Microsoft Teams</span>
+                        <span class="skill-tag">Direct Routing</span>
+                        <span class="skill-tag">Operator Connect</span>
+                        <span class="skill-tag">Calling Plans</span>
+                        <span class="skill-tag">Teams Phone System</span>
+                        <span class="skill-tag">Auto Attendant</span>
+                        <span class="skill-tag">Call Queues</span>
+                        <span class="skill-tag">Audio Conferencing</span>
+                        <span class="skill-tag">Skype for Business</span>
+                    </div>
+                </div>
+
+                <div class="skill-card reveal">
+                    <div class="skill-card-header">
+                        <div class="skill-icon purple"><i class="fas fa-server"></i></div>
+                        <h3 class="skill-card-title">Session Border Controllers</h3>
+                    </div>
+                    <div class="skill-tags">
+                        <span class="skill-tag">AudioCodes SBC</span>
+                        <span class="skill-tag">AudioCodes Voice Gateway</span>
+                        <span class="skill-tag">Oracle Communications SBC</span>
+                        <span class="skill-tag">Ribbon SBC</span>
+                    </div>
+                </div>
+
+                <div class="skill-card reveal">
+                    <div class="skill-card-header">
+                        <div class="skill-icon amber"><i class="fas fa-robot"></i></div>
+                        <h3 class="skill-card-title">Contact Center & AI</h3>
+                    </div>
+                    <div class="skill-tags">
+                        <span class="skill-tag">Luware Nimbus</span>
+                        <span class="skill-tag">Dynamics 365 Contact Center</span>
+                        <span class="skill-tag">AI Voice Agents</span>
+                        <span class="skill-tag">Text-to-Speech</span>
+                        <span class="skill-tag">Speech-to-Text</span>
+                        <span class="skill-tag">Conversational AI</span>
+                    </div>
+                </div>
+
+                <div class="skill-card reveal">
+                    <div class="skill-card-header">
+                        <div class="skill-icon blue"><i class="fas fa-cloud"></i></div>
+                        <h3 class="skill-card-title">Cloud & Administration</h3>
+                    </div>
+                    <div class="skill-tags">
+                        <span class="skill-tag">Microsoft 365</span>
+                        <span class="skill-tag">Azure AD</span>
+                        <span class="skill-tag">Teams Admin Center</span>
+                        <span class="skill-tag">Exchange Online</span>
+                        <span class="skill-tag">Power Platform</span>
+                        <span class="skill-tag">Power BI</span>
+                    </div>
+                </div>
+
+                <div class="skill-card reveal">
+                    <div class="skill-card-header">
+                        <div class="skill-icon green"><i class="fas fa-terminal"></i></div>
+                        <h3 class="skill-card-title">Tools & Automation</h3>
+                    </div>
+                    <div class="skill-tags">
+                        <span class="skill-tag">PowerShell</span>
+                        <span class="skill-tag">AudioCodes OVOC</span>
+                        <span class="skill-tag">Wireshark</span>
+                        <span class="skill-tag">CQD</span>
+                        <span class="skill-tag">RTMT</span>
+                        <span class="skill-tag">Syslog Viewer</span>
+                        <span class="skill-tag">Power BI Reporting</span>
+                    </div>
+                </div>
+
+                <div class="skill-card reveal">
+                    <div class="skill-card-header">
+                        <div class="skill-icon rose"><i class="fas fa-network-wired"></i></div>
+                        <h3 class="skill-card-title">Infrastructure & Telephony</h3>
+                    </div>
+                    <div class="skill-tags">
+                        <span class="skill-tag">SIP Trunking</span>
+                        <span class="skill-tag">PSTN</span>
+                        <span class="skill-tag">Analog & SIP Paging</span>
+                        <span class="skill-tag">Cloud Fax</span>
+                        <span class="skill-tag">ATA Devices</span>
+                        <span class="skill-tag">Hazardous Env. Telephony</span>
+                        <span class="skill-tag">Legacy PBX Migration</span>
+                    </div>
+                </div>
+
+                <div class="skill-card reveal" style="grid-column: span 2;">
+                    <div class="skill-card-header">
+                        <div class="skill-icon indigo"><i class="fas fa-gavel"></i></div>
+                        <h3 class="skill-card-title">Regulatory & Compliance</h3>
+                    </div>
+                    <div class="skill-tags">
+                        <span class="skill-tag">TRAI (India)</span>
+                        <span class="skill-tag">DOT (India)</span>
+                        <span class="skill-tag">MIIT (China)</span>
+                        <span class="skill-tag">Global Telecom Regulations</span>
+                        <span class="skill-tag">India</span>
+                        <span class="skill-tag">China</span>
+                        <span class="skill-tag">Turkey</span>
+                        <span class="skill-tag">UAE</span>
+                        <span class="skill-tag">LATAM</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Certifications Section -->
+    <section id="certifications">
+        <div class="section-inner">
+            <span class="section-label reveal"><i class="fas fa-certificate"></i> Credentials</span>
+            <h2 class="section-title reveal">Professional Certifications</h2>
+            <p class="section-desc reveal">Industry-recognized certifications across Microsoft, AudioCodes, Oracle, Cisco, and more.</p>
+
+            <div class="certs-grid">
+                <div class="cert-card reveal">
+                    <div class="cert-badge ms"><img src="https://learn.microsoft.com/en-us/media/learn/certification/badges/microsoft-certified-associate-badge.svg" alt="MS-700" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><span class="badge-fallback" style="font-size:1.1rem;font-weight:800;">MS</span></div>
+                    <div class="cert-info">
+                        <h4>Teams Administrator Associate</h4>
+                        <span class="cert-issuer">Microsoft &middot; MS-700</span>
+                    </div>
+                </div>
+                <div class="cert-card reveal">
+                    <div class="cert-badge ms"><img src="https://images.credly.com/images/c2d594f7-5d0f-496f-8be0-6f2291e5c939/image.png" alt="MS-721" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><span class="badge-fallback" style="font-size:1.1rem;font-weight:800;">MS</span></div>
+                    <div class="cert-info">
+                        <h4>Collaboration Communications Systems Engineer</h4>
+                        <span class="cert-issuer">Microsoft &middot; MS-721</span>
+                    </div>
+                </div>
+                <div class="cert-card reveal">
+                    <div class="cert-badge ms"><img src="https://learn.microsoft.com/en-us/media/learn/certification/badges/microsoft-certified-associate-badge.svg" alt="AI-102" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><span class="badge-fallback" style="font-size:1.1rem;font-weight:800;">AI</span></div>
+                    <div class="cert-info">
+                        <h4>Azure AI Engineer Associate</h4>
+                        <span class="cert-issuer">Microsoft Certified &middot; AI-102</span>
+                    </div>
+                </div>
+                <div class="cert-card reveal">
+                    <div class="cert-badge ms"><img src="MB230.png" alt="Dynamics 365 MB-230" style="border-radius:50%;width:100%;height:100%;object-fit:cover;" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><span class="badge-fallback" style="font-size:1.1rem;font-weight:800;">MS</span></div>
+                    <div class="cert-info">
+                        <h4>Dynamics 365 Customer Service Functional Consultant</h4>
+                        <span class="cert-issuer">Microsoft Certified &middot; MB-230</span>
+                    </div>
+                </div>
+                <div class="cert-card reveal">
+                    <div class="cert-badge ac"><img src="ACP badge.png" alt="AudioCodes Certified Professional" style="border-radius:50%;width:100%;height:100%;object-fit:cover;" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><span class="badge-fallback" style="font-size:1.1rem;font-weight:800;">AC</span></div>
+                    <div class="cert-info">
+                        <h4>AudioCodes Certified Professional</h4>
+                        <span class="cert-issuer">SBC in Microsoft Teams Environment</span>
+                    </div>
+                </div>
+                <div class="cert-card reveal">
+                    <div class="cert-badge or"><img src="https://images.credly.com/images/f1ef0ba1-91e5-41eb-ad46-c80736f16eec/Oracle_Specialist_Badge__1_.png" alt="Oracle SBC" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><span class="badge-fallback" style="font-size:1.1rem;font-weight:800;">OC</span></div>
+                    <div class="cert-info">
+                        <h4>Oracle SBC Certified Implementation Specialist</h4>
+                        <span class="cert-issuer">Oracle Communications</span>
+                    </div>
+                </div>
+                <div class="cert-card reveal">
+                    <div class="cert-badge cs"><img src="Cisco Webex.png" alt="Cisco Webex Calling" style="border-radius:50%;width:100%;height:100%;object-fit:cover;" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><span class="badge-fallback" style="font-size:1.1rem;font-weight:800;">CX</span></div>
+                    <div class="cert-info">
+                        <h4>Cisco Webex Certified Engineer</h4>
+                        <span class="cert-issuer">Cisco Systems</span>
+                    </div>
+                </div>
+                <div class="cert-card reveal">
+                    <div class="cert-badge asc"><img src="ASC-Badge.png" alt="ASC Compliance Recording" style="border-radius:50%;width:100%;height:100%;object-fit:cover;" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><span class="badge-fallback" style="font-size:1.1rem;font-weight:800;">CR</span></div>
+                    <div class="cert-info">
+                        <h4>Compliance Recording Solution Engineer</h4>
+                        <span class="cert-issuer">ASC Technologies</span>
+                    </div>
+                </div>
+                <div class="cert-card reveal">
+                    <div class="cert-badge lw"><img src="Luware Nimbus.png" alt="Luware Nimbus Certified Engineer" style="border-radius:50%;width:100%;height:100%;object-fit:cover;" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><span class="badge-fallback" style="font-size:1.1rem;font-weight:800;">LW</span></div>
+                    <div class="cert-info">
+                        <h4>Luware Nimbus Certified Engineer</h4>
+                        <span class="cert-issuer">Luware &middot; Contact Center</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section id="experience" style="background: var(--surface2);">
+        <div class="section-inner">
+            <span class="section-label reveal"><i class="fas fa-briefcase"></i> Career Journey</span>
+            <h2 class="section-title reveal">Professional Experience</h2>
+            <p class="section-desc reveal">A progressive career spanning enterprise UC, voice transformation, and solution architecture.</p>
+
+            <div class="timeline">
+                <!-- NTT -->
+                <div class="timeline-item reveal">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-header">
+                        <div>
+                            <div class="timeline-company"><a href="https://www.nttdata.com/global/en/" target="_blank" style="display:flex;align-items:center;gap:12px;color:inherit;text-decoration:none;"><img src="https://group.ntt/common/img/logo_nttgroup_en.svg" alt="NTT DATA" class="company-logo" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><span class="company-badge ntt">NTT</span>NTT Cloud and Communications <i class="fas fa-external-link-alt" style="font-size:0.7rem;color:var(--accent);opacity:0.6;"></i></a></div>
+                            <div class="timeline-role">Modern Workplace Consultant & UC Voice Architect</div>
+                        </div>
+                        <span class="timeline-date">Aug 2022 &mdash; Present</span>
+                    </div>
+                    <div class="timeline-content">
+                        <ul class="timeline-points">
+                            <li>Serve as UC Voice Architect at NTT — a global leader handling ~25% of Microsoft's voice platform traffic — delivering enterprise voice transformation solutions worldwide.</li>
+                            <li>Successfully delivered 100+ voice transformation projects across all regions for global organizations, including Fortune 500 enterprises such as Nestl&eacute;, Siemens, Bombardier, Louis Vuitton, and the Singapore Government.</li>
+                            <li>Architected one of the largest Microsoft Teams voice migration programs — managing large-scale SBC deployments and migrating hundreds of thousands of global Teams users to a modern voice platform.</li>
+                            <li>Voice-enabled 600,000+ users on the Microsoft Teams platform across Fortune 500 and government organizations worldwide.</li>
+                            <li>Designed zero-downtime, cost-effective UC solutions for mission-critical industries, including globally recognized oil refineries and chemical plants requiring hazardous environment telephony.</li>
+                            <li>Built AI-powered voice agents with text-to-speech, speech-to-text, and conversational AI capabilities for automated call handling.</li>
+                            <li>Deployed contact center solutions using Luware Nimbus and Microsoft Dynamics 365 Contact Center for banking and enterprise clients.</li>
+                            <li>Developed advanced PowerShell automation scripts and custom migration tools for bulk user provisioning and SBC configuration.</li>
+                            <li>Specialized expertise in regulated markets (India, China, Turkey, UAE, LATAM) — collaborated closely with Indian DOT and TRAI for compliance.</li>
+                            <li>Served as Solution Architect for India's international OSP platform and consulted for Microsoft on compliance-compliant, cost-effective solutions.</li>
+                        </ul>
+                        <div class="timeline-tags">
+                            <span class="timeline-tag">MS Teams</span>
+                            <span class="timeline-tag">Direct Routing</span>
+                            <span class="timeline-tag">AudioCodes</span>
+                            <span class="timeline-tag">Oracle SBC</span>
+                            <span class="timeline-tag">Luware Nimbus</span>
+                            <span class="timeline-tag">AI Voice</span>
+                            <span class="timeline-tag">PowerShell</span>
+                            <span class="timeline-tag">Dynamics 365</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Oerlikon -->
+                <div class="timeline-item reveal">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-header">
+                        <div>
+                            <div class="timeline-company"><a href="https://www.oerlikon.com/en/" target="_blank" style="display:flex;align-items:center;gap:12px;color:inherit;text-decoration:none;"><img src="https://www.oerlikon.com/ecoma/files/oerlikon.svg" alt="Oerlikon" class="company-logo" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><span class="company-badge oerlikon">OC</span>Oerlikon Balzers <i class="fas fa-external-link-alt" style="font-size:0.7rem;color:var(--accent);opacity:0.6;"></i></a></div>
+                            <div class="timeline-role">ICT System Specialist (Subject Matter Expert)</div>
+                            <div class="timeline-client">Client: Oerlikon Group — 15,000+ users across 36 countries</div>
+                        </div>
+                        <span class="timeline-date">Mar 2021 &mdash; Aug 2022</span>
+                    </div>
+                    <div class="timeline-content">
+                        <ul class="timeline-points">
+                            <li>Managed Microsoft Teams tenant for 15,000+ Teams-only and Direct Routing enterprise voice users across 36 countries.</li>
+                            <li>Administered Direct Routing infrastructure with 7,500+ EV-enabled users and 6 AudioCodes SBCs and Voice Gateways.</li>
+                            <li>Led complete migration from Skype for Business On-Premises to Microsoft Teams Only mode.</li>
+                            <li>Spearheaded SBC harmonization project to standardize global SBC infrastructure.</li>
+                            <li>Architected webhook-based monitoring solution for device health with auto-ticket generation.</li>
+                            <li>Developed Power BI Audio Quality templates and integrated Teams call logs with AudioCodes OVOC.</li>
+                        </ul>
+                        <div class="timeline-tags">
+                            <span class="timeline-tag">MS Teams</span>
+                            <span class="timeline-tag">AudioCodes SBC</span>
+                            <span class="timeline-tag">Power BI</span>
+                            <span class="timeline-tag">OVOC</span>
+                            <span class="timeline-tag">PowerShell</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Mindtree -->
+                <div class="timeline-item reveal">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-header">
+                        <div>
+                            <div class="timeline-company"><a href="https://www.ltm.com/" target="_blank" style="display:flex;align-items:center;gap:12px;color:inherit;text-decoration:none;"><img src="https://www.ltm.com/content/dam/ltimcorporatewebsite/refresh-images/LTM-Logo.svg" alt="LTIMindtree" class="company-logo" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><span class="company-badge mindtree">LTM</span>Mindtree Limited <i class="fas fa-external-link-alt" style="font-size:0.7rem;color:var(--accent);opacity:0.6;"></i></a></div>
+                            <div class="timeline-role">Senior Engineer — Subject Matter Expert</div>
+                            <div class="timeline-client">Client: Microsoft (North America & Canada — Enterprise Business)</div>
+                        </div>
+                        <span class="timeline-date">May 2020 &mdash; Dec 2020</span>
+                    </div>
+                    <div class="timeline-content">
+                        <ul class="timeline-points">
+                            <li>Supported Microsoft's premier enterprise business as an escalation engineer for North America and Canada.</li>
+                            <li>Served as escalation point for a team of 25 engineers, resolving critical Microsoft Teams and Direct Routing issues.</li>
+                            <li>Collaborated directly with Microsoft's product group to identify and fix a bug in the Teams application.</li>
+                            <li>Resolved long-pending issues for 100+ Microsoft global enterprise customers.</li>
+                        </ul>
+                        <div class="timeline-tags">
+                            <span class="timeline-tag">MS Teams</span>
+                            <span class="timeline-tag">Direct Routing</span>
+                            <span class="timeline-tag">Escalation Mgmt</span>
+                            <span class="timeline-tag">GCC</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Infosys -->
+                <div class="timeline-item reveal">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-header">
+                        <div>
+                            <div class="timeline-company"><a href="https://www.infosys.com/" target="_blank" style="display:flex;align-items:center;gap:12px;color:inherit;text-decoration:none;"><img src="https://commons.wikimedia.org/w/index.php?title=Special:Redirect/file/Infosys_logo.svg&width=300" alt="Infosys" class="company-logo" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><span class="company-badge infosys">INFY</span>Infosys <i class="fas fa-external-link-alt" style="font-size:0.7rem;color:var(--accent);opacity:0.6;"></i></a></div>
+                            <div class="timeline-role">Senior Technology Engineer</div>
+                            <div class="timeline-client">Clients: Telstra Limited | Intel Corporation</div>
+                        </div>
+                        <span class="timeline-date">Jan 2018 &mdash; May 2020</span>
+                    </div>
+                    <div class="timeline-content">
+                        <ul class="timeline-points">
+                            <li>Managed Skype for Business On-Premises and Hybrid deployment environments for Telstra and Intel.</li>
+                            <li>Led migration of Telstra's tenant from Skype for Business to Microsoft Teams Only mode.</li>
+                            <li>Executed legacy PBX cutover projects, migrating enterprise voice users to Direct Routing.</li>
+                            <li>Administered Cisco WebEx and Telepresence collaboration platforms.</li>
+                        </ul>
+                        <div class="timeline-tags">
+                            <span class="timeline-tag">Skype for Business</span>
+                            <span class="timeline-tag">Cisco WebEx</span>
+                            <span class="timeline-tag">PBX Migration</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Crenova -->
+                <div class="timeline-item reveal">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-header">
+                        <div>
+                            <div class="timeline-company"><a href="https://www.crenovaplating.com/" target="_blank" style="display:flex;align-items:center;gap:12px;color:inherit;text-decoration:none;"><img src="https://www.crenovaplating.com/images/logo.png" alt="Crenova" class="company-logo" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><span class="company-badge" style="background:linear-gradient(135deg,#2e7d32,#1b5e20);display:none;">CP</span>Crenova Plating Pvt Ltd <i class="fas fa-external-link-alt" style="font-size:0.7rem;color:var(--accent);opacity:0.6;"></i></a></div>
+                            <div class="timeline-role">IT Support Engineer</div>
+                        </div>
+                        <span class="timeline-date">Jul 2017 &mdash; Jan 2018</span>
+                    </div>
+                    <div class="timeline-content">
+                        <ul class="timeline-points">
+                            <li>Provided L1 service desk support for Office 365 queues and end-user troubleshooting.</li>
+                            <li>Managed local device support, CCTV systems, and Skype for Business configuration.</li>
+                        </ul>
+                        <div class="timeline-tags">
+                            <span class="timeline-tag">Office 365</span>
+                            <span class="timeline-tag">Skype for Business</span>
+                            <span class="timeline-tag">L1 Support</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Education Section -->
+    <section id="education">
+        <div class="section-inner">
+            <span class="section-label reveal"><i class="fas fa-graduation-cap"></i> Education & Executive Programs</span>
+            <h2 class="section-title reveal">Academic Background</h2>
+            <div style="display:flex;flex-wrap:wrap;gap:20px;margin-top:32px;">
+                <div class="cert-card reveal" style="flex:1;min-width:280px;">
+                    <div class="cert-badge ms" style="background:linear-gradient(135deg,#1a3a6b,#0f172a);font-size:1rem;">
+                        <i class="fas fa-award"></i>
+                    </div>
+                    <div class="cert-info">
+                        <h4>INSEAD Emerging Leaders Programme</h4>
+                        <span class="cert-issuer">INSEAD Business School &middot; Fontainebleau, France &middot; 2024</span><br>
+                        <span class="cert-issuer" style="color:var(--accent);">Executive Education &middot; Leadership & Management</span>
+                    </div>
+                </div>
+                <div class="cert-card reveal" style="flex:1;min-width:280px;">
+                    <div class="cert-badge ms" style="background:linear-gradient(135deg,#f59e0b,#d97706);font-size:1.3rem;">
+                        <i class="fas fa-graduation-cap"></i>
+                    </div>
+                    <div class="cert-info">
+                        <h4>Bachelor of Engineering (BE)</h4>
+                        <span class="cert-issuer">Pune University, Maharashtra &middot; 2011 &ndash; 2015</span><br>
+                        <span class="cert-issuer" style="color:var(--accent);">First Class with Distinction</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" style="background: var(--surface2);">
+        <div class="section-inner">
+            <span class="section-label reveal"><i class="fas fa-envelope"></i> Get in Touch</span>
+            <h2 class="section-title reveal">Let's Connect</h2>
+            <p class="section-desc reveal">Looking to transform your UC platforms? Let's discuss how I can help your organization.</p>
+
+            <div class="contact-grid">
+                <a href="mailto:Chandrakantbhise@yahoo.com" class="contact-card reveal">
+                    <div class="contact-icon email-icon"><i class="fas fa-envelope"></i></div>
+                    <div>
+                        <div class="contact-label">Email</div>
+                        <div class="contact-value">Chandrakantbhise@yahoo.com</div>
+                    </div>
+                </a>
+                <a href="tel:+919011070193" class="contact-card reveal">
+                    <div class="contact-icon phone-icon"><i class="fas fa-phone"></i></div>
+                    <div>
+                        <div class="contact-label">Phone</div>
+                        <div class="contact-value">+91 9011070193</div>
+                    </div>
+                </a>
+                <a href="https://www.linkedin.com/in/chandrakantbhise/" target="_blank" class="contact-card reveal">
+                    <div class="contact-icon linkedin-icon"><i class="fab fa-linkedin-in"></i></div>
+                    <div>
+                        <div class="contact-label">LinkedIn</div>
+                        <div class="contact-value">linkedin.com/in/chandrakantbhise</div>
+                    </div>
+                </a>
+                <div class="contact-card reveal">
+                    <div class="contact-icon location-icon"><i class="fas fa-map-marker-alt"></i></div>
+                    <div>
+                        <div class="contact-label">Location</div>
+                        <div class="contact-value">Pune, India</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2026 Chandrakant Bhise. All Rights Reserved.</p>
+        <p style="margin-top:8px;font-size:0.8rem;color:var(--text-muted);">Unified Communications Engineer & Voice Architect</p>
+    </footer>
+
+    <!-- JavaScript -->
+    <script>
+        // ===== THEME TOGGLE =====
+        const themeToggle = document.getElementById('themeToggle');
+        const html = document.documentElement;
+        const savedTheme = localStorage.getItem('theme') || 'dark';
+        html.setAttribute('data-theme', savedTheme);
+        updateThemeIcon(savedTheme);
+
+        themeToggle.addEventListener('click', () => {
+            const current = html.getAttribute('data-theme');
+            const next = current === 'dark' ? 'light' : 'dark';
+            html.setAttribute('data-theme', next);
+            localStorage.setItem('theme', next);
+            updateThemeIcon(next);
+        });
+
+        function updateThemeIcon(theme) {
+            themeToggle.innerHTML = theme === 'dark' ? '<i class="fas fa-sun"></i>' : '<i class="fas fa-moon"></i>';
+        }
+
+        // ===== HAMBURGER MENU =====
+        const hamburger = document.getElementById('hamburger');
+        const navLinks = document.getElementById('navLinks');
+        hamburger.addEventListener('click', () => navLinks.classList.toggle('open'));
+        navLinks.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => navLinks.classList.remove('open'));
+        });
+
+        // ===== SCROLL REVEAL =====
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                }
+            });
+        }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+
+        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+        // ===== COUNTER ANIMATION =====
+        function animateCounters() {
+            document.querySelectorAll('.metric-number').forEach(el => {
+                const target = parseInt(el.getAttribute('data-count'));
+                const suffix = el.getAttribute('data-suffix') || '+';
+                const duration = 2000;
+                const start = performance.now();
+
+                function update(now) {
+                    const elapsed = now - start;
+                    const progress = Math.min(elapsed / duration, 1);
+                    const eased = 1 - Math.pow(1 - progress, 3);
+                    const current = Math.floor(eased * target);
+
+                    if (target >= 1000) {
+                        el.textContent = current.toLocaleString() + suffix;
+                    } else {
+                        el.textContent = current + suffix;
+                    }
+
+                    if (progress < 1) requestAnimationFrame(update);
+                }
+                requestAnimationFrame(update);
+            });
+        }
+
+        const heroObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    animateCounters();
+                    heroObserver.disconnect();
+                }
+            });
+        }, { threshold: 0.3 });
+
+        heroObserver.observe(document.querySelector('.metrics-grid'));
+
+        // ===== NAVBAR SCROLL EFFECT =====
+        window.addEventListener('scroll', () => {
+            const nav = document.querySelector('.nav');
+            if (window.scrollY > 50) {
+                nav.style.boxShadow = '0 4px 20px rgba(0,0,0,0.2)';
+            } else {
+                nav.style.boxShadow = 'none';
+            }
+        });
+    </script>
+</body>
+</html>
